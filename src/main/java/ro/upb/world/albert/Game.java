@@ -24,8 +24,18 @@ public class Game {
 
 
     // upload JSON  &  text / graphic
-    public static void run() {
-
+    public void run() throws IOException {
+        Game.getInstance().loadAccounts();
+        System.out.println("Press T if you want to Test and Play TEXT version" +
+                "\n\tor press G if you want to play GRAPHIC-INTERFACE version");
+        Scanner key = new Scanner(System.in);
+        String enterKey = key.next();
+        if(enterKey.equalsIgnoreCase("T")) {
+            String rez = "text";
+        }
+        if(enterKey.equalsIgnoreCase("G")) {
+            String rez = "graphic";
+        }
     }
 
     public void listOptionForCurrentCell() {

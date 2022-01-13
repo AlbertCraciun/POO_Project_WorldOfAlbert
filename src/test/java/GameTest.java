@@ -42,7 +42,10 @@ public class GameTest {
         Assert.assertEquals(10, character1.getExperience());
         System.out.println(character1.getClass().getSimpleName());
         */
+    }
 
-
+    @Test
+    public void pressKey() throws IOException {
+        Game.getInstance().run();
     }
 }
