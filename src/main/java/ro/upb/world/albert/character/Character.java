@@ -13,18 +13,18 @@ import ro.upb.world.albert.potions.Potion;
         @JsonSubTypes.Type(value = Rogue.class, name = "Rogue")
 })
 public abstract class Character extends Entity{
-    String name;
-    String profession;
-    int experience;
-    int level;
+    public String name;
+    public String profession;
+    public int experience;
+    public int level;
 
-    int X;
-    int Y;
+    public int X;
+    public int Y;
 
-    int strength;
-    int charisma;
-    int dexterity;
-    int maxWeightInv;
+    public int strength;
+    public int charisma;
+    public int dexterity;
+    public int maxWeightInv;
 
     Inventory inv; //Potion type ?
 

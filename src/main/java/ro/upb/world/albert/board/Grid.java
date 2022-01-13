@@ -5,20 +5,17 @@ import ro.upb.world.albert.character.Character;
 import java.util.*;
 
 public class Grid extends ArrayList {
-    private static Grid gridInstance;
     public static int width = 5;
     public static int length = 5;
     Character p;
     Cell currentCell;
     List< List< Cell > > map;
 
-    private Grid() {
-    }
-
+    private static Grid gridInstance;
+    private Grid() {}
     static List< List< Cell > > mapGenerator(int width, int length) {
         return null;
     }
-
     public static Grid getInstance() {
         if (gridInstance == null) {
             gridInstance = new Grid();
@@ -26,17 +23,26 @@ public class Grid extends ArrayList {
         return gridInstance;
     }
 
-    Cell goNorth() {
-        return null;
-    }
-    void goSouth() {
 
+    String goNorth() {
+        if(p.Y < 0) {
+            System.out.println("You can't go north. Chose another direction.");
+            return null;
+        }
+        p.Y -= 1;
+        return currentCell.getCellContain().toCharacter();
     }
-    void goWest() {
-
+    String goSouth() {
+        p.Y += 1;
+        return currentCell.getCellContain().toCharacter();
     }
-    void goEast() {
-
+    String goWest() {
+        p.X -= 1;
+        return currentCell.getCellContain().toCharacter();
+    }
+    String goEast() {
+        p.X += 1;
+        return currentCell.getCellContain().toCharacter();
     }
 
 }

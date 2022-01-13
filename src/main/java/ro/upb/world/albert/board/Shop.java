@@ -1,10 +1,21 @@
 package ro.upb.world.albert.board;
 
-import ro.upb.world.albert.board.CellElement;
-
 public class Shop implements CellElement {
+    String name;
+
+    public Shop() {
+        name = "A shop...";
+    }
+
     @Override
     public String toCharacter() {
-        return null;
+        return "S";
+    }
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
