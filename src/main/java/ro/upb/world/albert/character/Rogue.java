@@ -16,8 +16,8 @@ public class Rogue extends Character {
         currentMP = maxMP;
         level = 0;
         experience = 0;
-        coordX = 0;
-        coordY = 0;
+        X = 0;
+        Y = 0;
         maxWeightInv = 4;
     }
 

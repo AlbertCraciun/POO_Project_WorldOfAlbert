@@ -13,11 +13,11 @@ public class Enemy extends Entity implements CellElement {
     }
 
     @Override
-    void receiveDamage(int d) {
+    public void receiveDamage(int d) {
     }
 
     @Override
-    void getDamage() {
+    public void getDamage() {
 
     }
 }

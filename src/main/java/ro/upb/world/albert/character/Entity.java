@@ -1,22 +1,22 @@
 package ro.upb.world.albert.character;
 
 import ro.upb.world.albert.spell.Spell;
-
 import java.util.*;
 
 abstract public class Entity {
-    List<Spell> abilities;
+    List< Spell > abilities;
+
     int currentHP;
     int maxHP;
     int currentMP;
     int maxMP;
+
     boolean fireProtection;
     boolean iceProtection;
     boolean earthProtection;
 
-    abstract void receiveDamage(int d);
-    abstract void getDamage();
-
+    public abstract void receiveDamage(int d);
+    public abstract void getDamage();
     public void lifeRegen(int hp) {
         if (currentHP + hp >= maxHP) {
             currentHP = maxHP;

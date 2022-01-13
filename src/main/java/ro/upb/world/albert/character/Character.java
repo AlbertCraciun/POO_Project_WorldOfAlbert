@@ -14,16 +14,18 @@ import ro.upb.world.albert.potions.Potion;
 })
 public abstract class Character extends Entity{
     String name;
-    int coordX;
-    int coordY;
-    Inventory inv; //Potion type ?
+    String profession;
+
+    int X;
+    int Y;
     int experience;
     int level;
     int strength;
     int charisma;
     int dexterity;
     int maxWeightInv;
-    String profession;
+
+    Inventory inv; //Potion type ?
 
     public Character() {
     }
@@ -31,15 +33,12 @@ public abstract class Character extends Entity{
     public String getName() {
         return name;
     }
-
     public int getExperience() {
         return experience;
     }
-
     public int getLevel() {
         return level;
     }
-
     public String getProfession() {
         return profession;
     }
