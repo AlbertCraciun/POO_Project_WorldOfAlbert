@@ -21,8 +21,8 @@ public class Account {
         private int maps_completed;
         private List <Character> characters;
 
-        public Information() {
-        }
+        //just for unit test
+        public Information() {}
 
         public Information(Credentials credentials, List<String> favorite_games,
                            String name, String country, int maps_completed,

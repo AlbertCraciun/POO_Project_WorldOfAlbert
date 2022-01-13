@@ -17,7 +17,6 @@ public class GameTest {
         Account.Information first = accounts.getAccounts().get(0);
         Account.Information second = accounts.getAccounts().get(1);
 
-
         Assert.assertEquals("Marcel", first.getName());
         Assert.assertEquals("Romania", first.getCountry());
         Assert.assertEquals("Metin", first.getFavorite_games().get(0));
@@ -27,12 +26,23 @@ public class GameTest {
         Assert.assertEquals("Nawra Ortwin", second.getName());
 
         Character character = first.getCharacters().get(0);
+        //Character character1 = first.getCharacters().get(1);
 
         Assert.assertEquals("Odysseus Prisco", character.getName());
-        Assert.assertEquals("Warrior", character.getProfession());
+        //Assert.assertEquals("Warrior", character.getProfession());
         Assert.assertEquals(1, character.getLevel());
         Assert.assertEquals(15, character.getExperience());
+        System.out.println(character);
         System.out.println(character.getClass().getSimpleName());
+
+        /*
+        Assert.assertEquals("Kameron Neppl", character1.getName());
+        Assert.assertEquals("Mage", character1.getProfession());
+        Assert.assertEquals(1, character1.getLevel());
+        Assert.assertEquals(10, character1.getExperience());
+        System.out.println(character1.getClass().getSimpleName());
+        */
+
 
     }
 }

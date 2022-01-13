@@ -3,16 +3,15 @@ package ro.upb.world.albert;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ro.upb.world.albert.board.Cell;
+import ro.upb.world.albert.board.CellType;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
 public class Game {
     List < Account > account;
-    Map <Cell.CellType, List < String >> story;
+    Map <CellType, List < String >> story;
 
     private static Game gameInstance;
     private Game() {}

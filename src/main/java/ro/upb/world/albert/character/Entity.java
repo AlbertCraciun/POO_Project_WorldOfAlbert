@@ -15,8 +15,8 @@ abstract public class Entity {
     boolean iceProtection;
     boolean earthProtection;
 
-    public abstract void receiveDamage(int d);
-    public abstract void getDamage();
+    public abstract void receiveDamage(int d, String type);
+    public abstract int getDamage();
     public void lifeRegen(int hp) {
         if (currentHP + hp >= maxHP) {
             currentHP = maxHP;
@@ -33,6 +33,15 @@ abstract public class Entity {
             currentMP += mp;
         }
     }
-    public void useSpell(Spell s, Enemy e) {
+    public void useSpell(List< Spell > abilities, Enemy enemy) {
+        System.out.println(abilities);
+        System.out.println("Chose an ability");
+        Scanner sc= new Scanner(System.in);
+        int i = sc.nextInt();
+        Spell spell = abilities.get(i);
+        if( spell.getCost() < currentMP ) {
+            enemy.receiveDamage(spell.getDmg(), spell.getName());
+        }
+        else System.out.println("You don't have enough MP to use this Spell");
     }
 }

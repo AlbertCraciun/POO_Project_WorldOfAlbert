@@ -15,11 +15,12 @@ import ro.upb.world.albert.potions.Potion;
 public abstract class Character extends Entity{
     String name;
     String profession;
+    int experience;
+    int level;
 
     int X;
     int Y;
-    int experience;
-    int level;
+
     int strength;
     int charisma;
     int dexterity;
@@ -28,6 +29,19 @@ public abstract class Character extends Entity{
     Inventory inv; //Potion type ?
 
     public Character() {
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public String getName() {
@@ -44,13 +58,43 @@ public abstract class Character extends Entity{
     }
 
     abstract void lvlUP();
-
-    void buyPotion(Potion p) {
+    public void buyPotion(Potion p) {
         System.out.println("Poțiunea nu a fost cumparata!");
     }
-    void addExp(int p) {
+    public void addExp(int p) {
         experience += p;
         System.out.println("You got " + p + " xp for" + "[action]" + ".\n");
     }
 
+    @Override
+    public String toString() {
+        return "Character{" +
+                "\n\t" +
+                "name='" + name + '\'' +
+                ", profession='" + profession + '\'' +
+                ", experience=" + experience +
+                ", level=" + level +
+                ",\n\t" +
+                "strength=" + strength +
+                ", charisma=" + charisma +
+                ", dexterity=" + dexterity +
+                ",\n\t" +
+                "fireProtection=" + fireProtection +
+                ", iceProtection=" + iceProtection +
+                ", earthProtection=" + earthProtection +
+                ",\n\t" +
+                "maxHP=" + maxHP +
+                ", maxMP=" + maxMP +
+                ", currentHP=" + currentHP +
+                ", currentMP=" + currentMP +
+                ",\n\t" +
+                "abilities=" + abilities +
+                ",\n\t" +
+                "X=" + X +
+                ", Y=" + Y +
+                ",\n\t" +
+                "maxWeightInv=" + maxWeightInv +
+                ", inv=" + inv +
+                '}';
+    }
 }

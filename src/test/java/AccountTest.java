@@ -17,7 +17,6 @@ import ro.upb.world.albert.character.CharacterType;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class AccountTest {
 
     public static final String NAME = "Albert";
@@ -55,15 +54,19 @@ public class AccountTest {
         List<String> arr = new ArrayList<>();
         arr.add("ceva");
 
+        List <Character> charactersList = new ArrayList<>();
+        charactersList.add(CharacterFactory.newCharacter(CharacterType.WARRIOR));
+        charactersList.get(0).setName("Albert");
+        charactersList.add(CharacterFactory.newCharacter(CharacterType.WARRIOR));
+        charactersList.get(1).setName("Iulius");
+
         Information playerInfo = new InformationBuilder()
                 .setName(NAME)
                 .setCountry(COUNTRY)
                 .setLoginInfo(info)
                 .setFavouritesGames(arr)
+                .setCharacters(charactersList)
                 .build();
-
-        List <Character> charactersList = new ArrayList<>();
-        charactersList.add(CharacterFactory.getInstance().newCharacter(CharacterType.MAGE));
 
         Account account = new Account(playerInfo);
 
