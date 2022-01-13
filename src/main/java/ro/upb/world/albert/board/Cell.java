@@ -11,7 +11,9 @@ public class Cell {
     CellType type;
     boolean mark;
 
-    public Cell() {
+    public Cell(int x, int y) {
+        cellX = x;
+        cellY = y;
         double w = Math.random();
         if(w <= 0.2) {
             cellContain = new Shop();

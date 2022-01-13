@@ -5,7 +5,9 @@ import ro.upb.world.albert.Accounts;
 import ro.upb.world.albert.Game;
 import ro.upb.world.albert.character.Character;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class GameTest {
 
@@ -45,7 +47,25 @@ public class GameTest {
     }
 
     @Test
-    public void pressKey() throws IOException {
+    public void testIfKeyPressed() throws IOException {
+        String input = "T";
+        InputStream key = new ByteArrayInputStream(input.getBytes());
+        System.setIn(key);
         Game.getInstance().run();
+
+        String input1 = "G";
+        InputStream key1 = new ByteArrayInputStream(input1.getBytes());
+        System.setIn(key1);
+        Game.getInstance().run();
+    }
+
+    @Test
+    public void testMapGeneration() throws IOException {
+        String input = "T";
+        InputStream key = new ByteArrayInputStream(input.getBytes());
+        System.setIn(key);
+        Game.getInstance().run();
+        System.out.println(Game.getInstance().getMap());
+        Game.getInstance().showMap();
     }
 }

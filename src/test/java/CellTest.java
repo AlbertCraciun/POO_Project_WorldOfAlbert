@@ -1,7 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
 import ro.upb.world.albert.board.Cell;
-import ro.upb.world.albert.character.Enemy;
 
 import static ro.upb.world.albert.board.CellType.*;
 
@@ -9,10 +8,10 @@ public class CellTest {
 
     @Test
     public void testNewCell() {
-        Cell cell = new Cell();
+        Cell cell = new Cell(1,2);
 
-        Assert.assertEquals(0, cell.getCellX());
-        Assert.assertEquals(0, cell.getCellY());
+        Assert.assertEquals(1, cell.getCellX());
+        Assert.assertEquals(2, cell.getCellY());
         Assert.assertEquals(false, cell.isMark());
         System.out.println(cell.getCellContain());
         System.out.println(cell.getCellContain().toCharacter());
