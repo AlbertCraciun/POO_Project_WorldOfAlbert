@@ -19,4 +19,11 @@ public class Accounts {
     public void setAccounts(List<Account.Information> accounts) {
         this.accounts = accounts;
     }
+
+    public void showAccounts() {
+        for (int i = 0; i < accounts.size(); i++) {
+            System.out.print(i +". ");
+            System.out.println(accounts.get(i).getName());
+        }
+    }
 }

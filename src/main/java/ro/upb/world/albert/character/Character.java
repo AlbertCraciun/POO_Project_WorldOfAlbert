@@ -97,4 +97,5 @@ public abstract class Character extends Entity{
                 ", inv=" + inv +
                 '}';
     }
+
 }

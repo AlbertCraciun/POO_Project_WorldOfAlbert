@@ -54,6 +54,24 @@ public class Account {
             return country;
         }
 
+        public void showCharacters() {
+            for (int i = 0; i < characters.size(); i++) {
+                System.out.print(i +". ");
+                System.out.println(characters.get(i).getName());
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "Information{" +
+                    "credentials=" + credentials +
+                    ", favorite_games=" + favorite_games +
+                    ", name='" + name + '\'' +
+                    ", country='" + country + '\'' +
+                    ", maps_completed=" + maps_completed +
+                    ", characters=" + characters +
+                    '}';
+        }
     }
 
     public Information getPlayerInfo() {

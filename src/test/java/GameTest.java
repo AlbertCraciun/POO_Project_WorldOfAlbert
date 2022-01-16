@@ -67,5 +67,7 @@ public class GameTest {
         Game.getInstance().run();
         System.out.println(Game.getInstance().getMap());
         Game.getInstance().showMap();
+        System.out.println(Game.getInstance().getEncryptedMap());
+        Game.getInstance().showEncryptedMap();
     }
 }

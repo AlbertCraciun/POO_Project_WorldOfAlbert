@@ -1,5 +1,6 @@
 package ro.upb.world.albert.character;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ro.upb.world.albert.spell.Earth;
 import ro.upb.world.albert.spell.Fire;
 import ro.upb.world.albert.spell.Ice;
@@ -8,6 +9,7 @@ import ro.upb.world.albert.spell.Spell;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+@JsonIgnoreProperties({"damage"})
 public class Mage extends Character {
 
     public Mage() {
@@ -17,6 +19,8 @@ public class Mage extends Character {
         charisma = 10;
         dexterity = 7;
         maxWeightInv = 30;
+        inv = new Inventory(maxWeightInv);
+        profession = "Mage";
         iceProtection = true;
         abilities = new ArrayList<>();
         int numAbilities = ThreadLocalRandom.current().nextInt(2, 4 + 1);
