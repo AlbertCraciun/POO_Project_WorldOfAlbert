@@ -7,6 +7,8 @@ import ro.upb.world.albert.board.Cell;
 import ro.upb.world.albert.board.CellType;
 import ro.upb.world.albert.board.Grid;
 import ro.upb.world.albert.character.Character;
+import ro.upb.world.albert.character.Enemy;
+import ro.upb.world.albert.potions.HealthPotion;
 import ro.upb.world.albert.potions.ManaPotion;
 import ro.upb.world.albert.potions.Potion;
 
@@ -58,6 +60,7 @@ public class Game {
         System.out.println("You chose:" + information.getCharacters().get(num1).getName());
         System.out.println("These are his all stats: " + information.getCharacters().get(num1));
         System.out.println();
+        Grid.getInstance().getCharacter().getInv().setCharacter(Grid.getInstance().getCharacter());
         System.out.println("Press T if you want to Test and Play TEXT version" +
                 "\n\tor press G if you want to play GRAPHIC-INTERFACE version");
         Scanner key = new Scanner(System.in);
@@ -82,8 +85,32 @@ public class Game {
                 k++;
                 enterP = keyP.nextLine();
             }
+            System.out.println();
             listOptionForCurrentCell();
-
+            enterP = keyP.nextLine();
+            if(enterP.equalsIgnoreCase("P")) {
+                Grid.getInstance().goEast();
+                Game.getInstance().modifyEncryptedMap();
+                Game.getInstance().showEncryptedMap();
+            }
+            System.out.println();
+            enterP = keyP.nextLine();
+            k = 0;
+            while(enterP.equalsIgnoreCase("P") && k < 3) {
+                Grid.getInstance().goSouth();
+                Game.getInstance().modifyEncryptedMap();
+                Game.getInstance().showEncryptedMap();
+                k++;
+                enterP = keyP.nextLine();
+            }
+            listOptionForCurrentCell();
+            enterP = keyP.nextLine();
+            if(enterP.equalsIgnoreCase("P")) {
+                Grid.getInstance().goSouth();
+                Game.getInstance().modifyEncryptedMap();
+                Game.getInstance().showEncryptedMap();
+            }
+            listOptionForCurrentCell();
         }
         if(enterKey.equalsIgnoreCase("G")) {
             System.out.println("GUI");
@@ -94,30 +121,46 @@ public class Game {
     public void listOptionForCurrentCell() {
         if(Grid.getInstance().currentCell.getCellContain().toCharacter().equalsIgnoreCase("S")) {
             System.out.println("You found a store. You can buy a potions for regeneration mana or life.");
-            System.out.println("What potions do you want?\n1. Mana regen\n2. Life regen\n\t --(press a number) --");
-            Scanner keyNum1 = new Scanner(System.in);
-            String enterNum1 = keyNum1.nextLine();
-            int num1 = Integer.parseInt(enterNum1);
-            if(num1 == 1) {
+            System.out.println("What potions do you want?\n1. Mana regen\n2. Life regen\n\t --(press \"P\" to buy both) --");
+            Scanner keyP = new Scanner(System.in);
+            String enterP = keyP.nextLine();
+            if(enterP.equalsIgnoreCase("P")) {
                 Potion potion = new ManaPotion();
                 System.out.println("You chose to buy potion for mana regen. It costs " + potion.getPrice() +
                         "\nhas a regen value: " + potion.regenValue() +
                         "\nand has a weight" + potion.getWeight());
-            }
-            else() {
-
-            }
-            Scanner keyP = new Scanner(System.in);
-            String enterP = keyP.nextLine();
-            if(enterP.equalsIgnoreCase("P")) {
-
+                if (Grid.getInstance().character.getInv().remainWeight() > potion.getWeight()) ;
+                {
+                    System.out.println("You have enough space to buy this potion");
+                    Grid.getInstance().character.getInv().addPotion(potion);
+                }
+                Potion potion2 = new HealthPotion();
+                System.out.println("You chose to buy potion for life regen. It costs " + potion2.getPrice() +
+                        "\nhas a regen value: " + potion2.regenValue() +
+                        "\nand has a weight" + potion2.getWeight());
+                if (Grid.getInstance().character.getInv().remainWeight() > potion2.getWeight()) ;
+                {
+                    System.out.println("You have enough space to buy this potion");
+                    Grid.getInstance().character.getInv().addPotion(potion2);
+                }
             }
         }
         if(Grid.getInstance().currentCell.getCellContain().toCharacter().equalsIgnoreCase("E")) {
-
+            System.out.println("You found a enemy. You must fight.\n\t -- press \"P\" to use spell and potions --");
+            Character character = Grid.getInstance().getCharacter();
+            Cell cell = Game.getInstance().getMap().get(character.Y).get(character.X);
+            Enemy enemy = (Enemy) cell.getCellContain();
+            System.out.println(enemy);
+            System.out.println("You'll use a spell: ");
+            enemy.receiveDamage(character.getDamage(), "basic");
+            System.out.println("Using potions: ");
+            character.getInv().removePotion(character.getInv().getPotions().get(1));
+            character.getInv().removePotion(character.getInv().getPotions().get(0));
+            System.out.println("Enemy is killed!");
         }
         if(Grid.getInstance().currentCell.getCellContain().toCharacter().equalsIgnoreCase("F")) {
-
+            System.out.println("Congrats! You finished the map / game! Thanks for playing.");
+            System.out.println("\n\t -- this game was just a console-test for poo sadly... --");
         }
     }
 

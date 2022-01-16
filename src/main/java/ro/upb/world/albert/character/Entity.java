@@ -44,4 +44,8 @@ abstract public class Entity {
         }
         else System.out.println("You don't have enough MP to use this Spell");
     }
+
+    public List<Spell> getAbilities() {
+        return abilities;
+    }
 }

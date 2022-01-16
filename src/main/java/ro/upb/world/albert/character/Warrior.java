@@ -12,17 +12,17 @@ import java.util.concurrent.ThreadLocalRandom;
 @JsonIgnoreProperties({"damage"})
 public class Warrior extends Character {
     public Warrior() {
-        inv = new Inventory(maxWeightInv);
         currentHP = maxHP = 100;
         currentMP = maxMP = 50;
         strength = 10;
         charisma = 4;
         dexterity = 7;
         maxWeightInv = 30;
+        inv = new Inventory(maxWeightInv);
         profession = "Warrior";
         fireProtection = true;
         abilities = new ArrayList<>();
-        int numAbilities = ThreadLocalRandom.current().nextInt(2, 4 + 1);
+        int numAbilities = ThreadLocalRandom.current().nextInt(1, 2 + 1);
         for (int i = 0; i < numAbilities; i++) {
             double x = Math.random();
             if (x <= 0.33) {
@@ -96,4 +96,6 @@ public class Warrior extends Character {
             System.out.println("You achieved lvl" + level);
         }
     }
+
+
 }

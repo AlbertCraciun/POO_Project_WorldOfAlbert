@@ -26,7 +26,7 @@ public abstract class Character extends Entity{
     public int dexterity;
     public int maxWeightInv;
 
-    Inventory inv; //Potion type ?
+    Inventory inv;
 
     public Character() {
     }
@@ -56,6 +56,10 @@ public abstract class Character extends Entity{
     public String getProfession() {
         return profession;
     }
+    public Inventory getInv() {
+        return inv;
+    }
+
 
     abstract void lvlUP();
     public void buyPotion(Potion p) {

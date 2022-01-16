@@ -4,6 +4,7 @@ import ro.upb.world.albert.potions.Potion;
 import java.util.*;
 
 public class Inventory {
+    Character character;
     List <Potion> potions;
     int maxWeight;
     int coins;
@@ -13,23 +14,31 @@ public class Inventory {
         this.maxWeight = maxWeight;
     }
 
-    void addPotion(Potion p) {
+    public void addPotion(Potion p) {
         potions.add(p);
         System.out.println(p.name + " added.\n");
         System.out.println("Potions in your inventory: "
                 + potions);
     }
-    void removePotion(Potion p) {
+    public void removePotion(Potion p) {
         potions.remove(p);
         System.out.println(p.name + " used.\n");
         System.out.println("Potions in your inventory:"
                 + potions);
     }
-    int remainWeight(Character c) {
+    public int remainWeight() {
         int g = 0;
         for (int i = 0; i < potions.size(); i++) {
             g += potions.get(i).getWeight();
         }
-        return c.maxWeightInv - g;
+        return character.maxWeightInv - g;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
+
+    public List<Potion> getPotions() {
+        return potions;
     }
 }

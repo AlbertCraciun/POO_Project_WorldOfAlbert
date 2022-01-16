@@ -23,7 +23,7 @@ public class Mage extends Character {
         profession = "Mage";
         iceProtection = true;
         abilities = new ArrayList<>();
-        int numAbilities = ThreadLocalRandom.current().nextInt(2, 4 + 1);
+        int numAbilities = ThreadLocalRandom.current().nextInt(1, 2 + 1);
         for (int i = 0; i < numAbilities; i++) {
             double x = Math.random();
             if (x <= 0.33) {
